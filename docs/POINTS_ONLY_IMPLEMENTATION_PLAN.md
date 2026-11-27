@@ -31,5 +31,22 @@ This fork is being prepared as a points-only entertainment platform. Existing ga
 6. Run automated tests for registration, authorization, balance changes, negative-balance prevention, and payment-route unavailability.
 7. Deploy only after tests pass and the hosting environment has persistent database storage and secure secrets.
 
-## Current status
-Planning baseline only. No game files, assets, game launch logic, provider callback logic, or payment routes have been modified yet.
+## Implemented on branch `points-only-demo`
+- Registration now explicitly initializes balance, bonus, withdrawal, and demo balance fields to zero.
+- Registration no longer grants spin-token bonus credits.
+- Added a points transaction ledger migration with administrator, user, action, amount, before/after balance, reason, and timestamps.
+- Added authenticated points API endpoints:
+  - `GET /api/points/me`
+  - `GET /api/points/admin/users` (admin role only)
+  - `POST /api/points/admin/adjust` (admin role only)
+- Added a Filament admin page at `/admin` named **Points manager**. It supports adding/deducting points and records the reason and audit entry.
+- Admin panel access now requires the explicit `admin` role rather than a hard-coded published email address.
+- Removed customer deposit/withdraw API route includes and web payment gateway route includes.
+- Existing game catalog, game assets, game names, game launch code, and provider callback code have not been edited.
+
+## Not yet verified
+- The repository has not been built or run in a PHP/Laravel environment during this session. Run `composer install`, database migrations, and the project's automated tests before deployment.
+- External provider wallet callbacks have not yet been fully audited. Keep any provider whose callbacks cannot be proven to operate only on non-redeemable points disabled until reviewed.
+- This is committed to the feature branch only; it has not been deployed to a public host.
+- Existing admin payment-related Filament resources may still be visible in the admin navigation and need a separate UI cleanup.
+- Do not add real-money payment credentials or configure cash deposits, withdrawals, transfers, or redemption.
