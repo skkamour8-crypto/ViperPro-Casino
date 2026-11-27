@@ -29,6 +29,7 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
 });
 
 Route::group(['middleware' => ['auth.jwt']], function () {
+    include_once(__DIR__ . '/groups/api/points.php');
     Route::prefix('profile')
         ->group(function ()
         {
@@ -44,8 +45,6 @@ Route::group(['middleware' => ['auth.jwt']], function () {
     Route::prefix('wallet')
         ->group(function ()
         {
-            include_once(__DIR__ . '/groups/api/wallet/deposit.php');
-            include_once(__DIR__ . '/groups/api/wallet/withdraw.php');
         });
 
     include_once(__DIR__ . '/groups/api/missions/mission.php');;
@@ -60,7 +59,6 @@ Route::prefix('categories')
     });
 
 include_once(__DIR__ . '/groups/api/games/index.php');
-include_once(__DIR__ . '/groups/api/gateways/suitpay.php');
 
 Route::prefix('search')
     ->group(function ()

@@ -18,14 +18,12 @@
                     {{ $t('Casino') }}
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
-                <div class="flex items-center justify-center">
-                    <button @click="$router.push('/profile/deposit')" data-tooltip-target="tooltip-new" type="button" class="inline-flex items-center justify-center w-10 h-10 font-medium bg-green-700 rounded-full hover:bg-green-700 group focus:ring-4 focus:ring-green-300 focus:outline-none dark:focus:ring-blue-800">
-                        <i class="fa-solid fa-dollar-sign"></i>
-                        <span class="sr-only">{{ $t('Deposit') }}</span>
-                    </button>
-                </div>
-                <div id="tooltip-new" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                    {{ $t('New Deposit') }}
+                <button @click="$router.push('/profile/transactions')" data-tooltip-target="tooltip-history" type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
+                    <i class="fa-solid fa-clock-rotate-left mb-1 text-xl"></i>
+                    <span class="text-[12px]">{{ $t('Transactions') }}</span>
+                </button>
+                <div id="tooltip-history" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    {{ $t('Transactions') }}
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
                 <button @click="$router.push('/profile/affiliate')" data-tooltip-target="tooltip-sport" type="button" class="inline-flex flex-col items-center justify-center px-5 rounded-r-full hover:bg-gray-50 dark:hover:bg-gray-800 group">
