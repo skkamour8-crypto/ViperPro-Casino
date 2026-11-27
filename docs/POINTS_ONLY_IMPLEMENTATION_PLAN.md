@@ -44,6 +44,8 @@ This fork is being prepared as a points-only entertainment platform. Existing ga
 - Removed customer deposit/withdraw API route includes and web payment gateway route includes.
 - Hid the legacy wallet editor, deposit/withdrawal admin resources, and payment gateway admin pages; the new Points manager is the supported admin balance control.
 - Updated the customer wallet screen and header to display virtual points, removed deposit/withdraw shortcuts, and replaced deposit/withdraw screens with a points-only notice.
+- Added a browser-based Wasmer setup guide and mapped the managed database's `DB_NAME` environment variable as a fallback for Laravel's `DB_DATABASE` setting.
+- Added a GitHub Actions workflow for Composer validation, PHP syntax checks, and the Vite frontend build.
 - Existing game catalog, game assets, game names, game launch code, and provider callback code have not been edited.
 
 ## Not yet verified
