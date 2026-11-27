@@ -8,10 +8,10 @@
     </button>
     <button @click="$router.push('/profile/wallet')" v-else type="button" class="flex justify-center items-center mr-3 pt-1 wallet-money">
         <div class="mr-2">
-            <img :src="`/assets/images/coin/`+wallet?.currency+`.png`" alt="" width="20">
+            <i class="fa-solid fa-star text-yellow-400"></i>
         </div>
         <div>
-            <strong>{{ state.currencyFormat(wallet?.total_balance, wallet?.currency) }}</strong>
+            <strong>{{ Number(wallet?.total_balance || 0).toLocaleString() }} pts</strong>
         </div>
 <!--        <div class="ml-2 text-sm">-->
 <!--            <i class="fa-solid fa-chevron-down"></i>-->
