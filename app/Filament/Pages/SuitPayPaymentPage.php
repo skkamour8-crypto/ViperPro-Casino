@@ -37,7 +37,7 @@ class SuitPayPaymentPage extends Page
      */
     public static function canAccess(): bool
     {
-        return auth()->user()->hasRole('admin');
+        return false; // Disabled in points-only mode.
     }
 
     public ?array $data = [];
