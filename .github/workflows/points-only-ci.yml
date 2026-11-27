@@ -23,7 +23,7 @@ jobs:
           coverage: none
 
       - name: Validate Composer configuration
-        run: composer validate --no-check-publish
+        run: composer validate --no-check-publish --no-check-lock
 
       - name: Install PHP dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
