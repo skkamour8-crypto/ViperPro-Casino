@@ -45,6 +45,7 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Filament\Pages\DashboardAdmin;
+use App\Filament\Pages\PointsManager;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -156,25 +157,6 @@ class AdminPanelProvider extends PanelProvider
                         : NavigationGroup::make()
                     ,
                     auth()->user()->hasRole('admin') ?
-                        NavigationGroup::make('Pagamentos')
-                            ->items([
-                                NavigationItem::make('gateway')
-                                    ->icon('heroicon-o-cog-6-tooth')
-                                    ->label(fn (): string => 'Gateway de Pagamentos')
-                                    ->url(fn (): string => GatewayPage::getUrl())
-                                    ->isActiveWhen(fn () => request()->routeIs('filament.pages.gateway-page'))
-                                    ->visible(fn(): bool => auth()->user()->hasRole('admin')),
-
-                                NavigationItem::make('suitpay-pagamentos')
-                                    ->icon('heroicon-o-currency-dollar')
-                                    ->label(fn (): string => 'SuitPay Pagamentos')
-                                    ->url(fn (): string => SuitPayPaymentPage::getUrl())
-                                    ->isActiveWhen(fn () => request()->routeIs('filament.pages.suit-pay-payment-page'))
-                                    ->visible(fn(): bool => auth()->user()->hasRole('admin')),
-                            ])
-                        : NavigationGroup::make()
-                    ,
-                    auth()->user()->hasRole('admin') ?
                         NavigationGroup::make('Customização')
                             ->items([
                                 ...BannerResource::getNavigationItems(),
@@ -192,9 +174,7 @@ class AdminPanelProvider extends PanelProvider
                         NavigationGroup::make('Administração')
                             ->items([
                                 ...UserResource::getNavigationItems(),
-                                ...WalletResource::getNavigationItems(),
-                                ...DepositResource::getNavigationItems(),
-                                ...WithdrawalResource::getNavigationItems(),
+                                ...PointsManager::getNavigationItems(),
                             ])
                         : NavigationGroup::make()
                     ,
