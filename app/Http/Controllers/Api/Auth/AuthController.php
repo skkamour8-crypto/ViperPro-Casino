@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
-use App\Models\SpinRuns;
 use App\Models\Setting;
 use App\Models\Wallet;
 use App\Traits\Affiliates\AffiliateHistoryTrait;
@@ -99,28 +98,7 @@ class AuthController extends Controller
 
                 $this->createWallet($user);
 
-                if( $setting->disable_spin) {
-                    if(!empty($request->spin_token)) {
-                        try {
-                            $str = base64_decode($request->spin_token);
-                            $obj = json_decode($str);
-
-                            $spin_run = SpinRuns::where([
-                                'key'   => $obj->signature,
-                                'nonce' => $obj->nonce
-                            ])->first();
-
-                            $data = $spin_run->prize;
-                            $obj = json_decode($data);
-                            $value = $obj->value;
-
-                            Wallet::where('user_id', $user->id)->increment('balance_bonus', $value);
-
-                        } catch (\Exception $e) {
-                            return response()->json(['error' => $e->getMessage()], 400);
-                        }
-                    }
-                }
+                // Points-only mode: new accounts receive no promotional or spin credits.
 
                 $credentials = $request->only(['email', 'password']);
                 $token = auth('api')->attempt($credentials);
