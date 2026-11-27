@@ -32,7 +32,6 @@
 
                     <div v-if="isAuthenticated" class="flex items-center">
                         <WalletBalance />
-                        <MakeDeposit :showMobile="false" :title="$t('Deposit')" />
                         <LanguageSelector />
                         <DropdownDarkLight/>
 
@@ -67,22 +66,6 @@
                                                 <i class="fa-duotone fa-people-group"></i>
                                             </span>
                                             {{ $t('Affiliate') }}
-                                        </RouterLink>
-                                    </li>
-                                    <li>
-                                        <RouterLink :to="{ name: 'profileDeposit' }" active-class="profile-menu-active" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">
-                                            <span class="w-8 h-8 mr-3">
-                                                <i class="fa-regular fa-money-bill-trend-up"></i>
-                                            </span>
-                                            {{ $t('Deposit') }}
-                                        </RouterLink>
-                                    </li>
-                                    <li>
-                                        <RouterLink :to="{ name: 'profileWithdraw' }" active-class="profile-menu-active" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">
-                                            <span class="w-8 h-8 mr-3">
-                                                <i class="fa-light fa-money-bill-transfer"></i>
-                                            </span>
-                                            {{ $t('Withdraw') }}
                                         </RouterLink>
                                     </li>
                                     <li>
@@ -510,14 +493,13 @@ import DropdownDarkLight from "@/Components/UI/DropdownDarkLight.vue";
 import LanguageSelector from "@/Components/UI/LanguageSelector.vue";
 import WalletBalance from "@/Components/UI/WalletBalance.vue";
 import HttpApi from "@/Services/HttpApi.js";
-import MakeDeposit from "@/Components/UI/MakeDeposit.vue";
 import {useSettingStore} from "@/Stores/SettingStore.js";
 import {searchGameStore} from "@/Stores/SearchGameStore.js";
 import CassinoGameCard from "@/Pages/Cassino/Components/CassinoGameCard.vue";
 
 export default {
     props: ['simple'],
-    components: {CassinoGameCard, MakeDeposit, WalletBalance, LanguageSelector, DropdownDarkLight, RouterLink },
+    components: {CassinoGameCard, WalletBalance, LanguageSelector, DropdownDarkLight, RouterLink },
     data() {
         return {
             isLoadingLogin: false,
@@ -753,7 +735,7 @@ export default {
                         }
 
                         _this.modalRegister.toggle();
-                        _this.router.push({ name: 'profileDeposit' });
+                        _this.router.push({ name: 'profileWallet' });
                         _toast.success(_this.$t('Your account has been created successfully'));
                     }
 
