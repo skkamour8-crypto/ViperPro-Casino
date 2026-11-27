@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
-use App\Models\Setting;
 use App\Models\Wallet;
 use App\Traits\Affiliates\AffiliateHistoryTrait;
 use DB;
@@ -66,8 +65,6 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         try {
-            $setting = \Helper::getSetting();
-
             $rules = [
                 'name'          => 'required|string',
                 'email'         => 'required|email|unique:users',
