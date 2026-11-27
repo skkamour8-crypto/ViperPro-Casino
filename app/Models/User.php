@@ -137,8 +137,8 @@ class User extends Authenticatable implements FilamentUser, JWTSubject
 
     public function canAccessPanel(Panel $panel): bool
     {
-        // Restringir o acesso apenas ao usuário com o email 'admin@hotmail.com'
-        return $this->hasRole(['admin', 'afiliado']) && $this->email === 'admin@hotmail.com';
+        // Only explicitly assigned administrators may access the admin panel.
+        return $this->hasRole('admin');
     }
 
 
