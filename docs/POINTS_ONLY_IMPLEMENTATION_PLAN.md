@@ -42,11 +42,12 @@ This fork is being prepared as a points-only entertainment platform. Existing ga
 - Added a Filament admin page at `/admin` named **Points manager**. It supports adding/deducting points and records the reason and audit entry.
 - Admin panel access now requires the explicit `admin` role rather than a hard-coded published email address.
 - Removed customer deposit/withdraw API route includes and web payment gateway route includes.
+- Hid the legacy wallet editor, deposit/withdrawal admin resources, and payment gateway admin pages; the new Points manager is the supported admin balance control.
 - Existing game catalog, game assets, game names, game launch code, and provider callback code have not been edited.
 
 ## Not yet verified
 - The repository has not been built or run in a PHP/Laravel environment during this session. Run `composer install`, database migrations, and the project's automated tests before deployment.
-- External provider wallet callbacks have not yet been fully audited. Keep any provider whose callbacks cannot be proven to operate only on non-redeemable points disabled until reviewed.
+- External provider wallet callbacks have not yet been fully audited. The existing game launch/callback code is unchanged; test every provider in an isolated environment and keep any provider whose callbacks cannot be proven to operate only on non-redeemable points disabled until reviewed.
 - This is committed to the feature branch only; it has not been deployed to a public host.
 - Existing admin payment-related Filament resources may still be visible in the admin navigation and need a separate UI cleanup.
 - Do not add real-money payment credentials or configure cash deposits, withdrawals, transfers, or redemption.
