@@ -29,6 +29,7 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
 });
 
 Route::group(['middleware' => ['auth.jwt']], function () {
+    include_once(__DIR__ . '/groups/api/points.php');
     Route::prefix('profile')
         ->group(function ()
         {
