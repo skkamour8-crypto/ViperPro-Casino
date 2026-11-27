@@ -37,7 +37,7 @@ class DepositResource extends Resource
      */
     public static function canAccess(): bool
     {
-        return auth()->user()->hasRole('admin');
+        return false; // Disabled in points-only mode.
     }
 
     /**
