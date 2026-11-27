@@ -128,7 +128,11 @@ class AuthController extends Controller
             'user_id'   => $user->id,
             'currency'  => $setting->currency_code,
             'symbol'    => $setting->prefix,
-            'active'    => 1
+            'active'    => 1,
+            'balance' => 0,
+            'balance_bonus' => 0,
+            'balance_withdrawal' => 0,
+            'balance_demo' => 0
         ]);
     }
 
