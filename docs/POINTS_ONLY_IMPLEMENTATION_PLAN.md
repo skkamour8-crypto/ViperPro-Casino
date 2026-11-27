@@ -43,6 +43,7 @@ This fork is being prepared as a points-only entertainment platform. Existing ga
 - Admin panel access now requires the explicit `admin` role rather than a hard-coded published email address.
 - Removed customer deposit/withdraw API route includes and web payment gateway route includes.
 - Hid the legacy wallet editor, deposit/withdrawal admin resources, and payment gateway admin pages; the new Points manager is the supported admin balance control.
+- Updated the customer wallet screen and header to display virtual points, removed deposit/withdraw shortcuts, and replaced deposit/withdraw screens with a points-only notice.
 - Existing game catalog, game assets, game names, game launch code, and provider callback code have not been edited.
 
 ## Not yet verified
